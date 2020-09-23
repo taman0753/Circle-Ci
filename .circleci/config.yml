@@ -36,3 +36,8 @@ jobs:
           
       # Run maven commands
       - run: mvn package
+  workflows:
+  my_workflow:
+    jobs:
+      - maven-build
+      
