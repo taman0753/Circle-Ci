@@ -1,4 +1,3 @@
-  
 version: 1.0
 
 
@@ -7,13 +6,13 @@ jobs:
   test:
      docker:
       - image: circleci/openjdk:stretch
-      steps:
-       -run: mvn clean
+        steps:
+         -run: mvn clean
 
   build:
      docker:
       - image: circleci/openjdk:stretch
-      steps:
+        steps:
          -run: mvn install
 workflows:
   version: 1
