@@ -1,21 +1,21 @@
+  
 version: 2.0
+
+orbs:
+  maven: circleci/maven@0.0.12
 
 jobs:
   test:
      machine: # executor type
       image: ubuntu-1604:201903-01
-    steps:
-      
-     
-      -run: mvn clean
+      steps:
+       -run: mvn clean
 
   build:
      machine: # executor type
       image: ubuntu-1604:201903-01
-    steps:
-     
-      
-      -run: mvn install
+      steps:
+         -run: mvn install
 workflows:
   version: 2
 
