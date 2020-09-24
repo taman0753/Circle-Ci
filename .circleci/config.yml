@@ -1,5 +1,5 @@
   
-version: 2.0
+version: 1.0
 
 
 
@@ -16,7 +16,7 @@ jobs:
       steps:
          -run: mvn install
 workflows:
-  version: 2
+  version: 1
 
   build-then-test:
     jobs:
