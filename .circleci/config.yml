@@ -2,20 +2,20 @@ version: 2.0
 
 jobs:
   test:
-    docker:
-      - image: circleci/openjdk:stretch
+     machine: # executor type
+      image: ubuntu-1604:201903-01
     steps:
       
-      -run: git update-index --chmod=+x mvnw
-      -run: ./mvnw test
+     
+      -run: mvn clean
 
   build:
-    docker:
-      - image: circleci/openjdk:stretch
+     machine: # executor type
+      image: ubuntu-1604:201903-01
     steps:
      
-      -run: git update-index --chmod=+x mvnw
-      -run: ./mvnw -Dmaven.test.skip=true package
+      
+      -run: mvn install
 workflows:
   version: 2
 
