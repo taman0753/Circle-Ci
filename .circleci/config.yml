@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/openjdk:stretch
     steps:
-      - checkout
+      
       -run: git update-index --chmod=+x mvnw
       - run: ./mvnw test
 
@@ -13,7 +13,7 @@ jobs:
     docker:
       - image: circleci/openjdk:stretch
     steps:
-      - checkout
+     
       -run: git update-index --chmod=+x mvnw
       - run: ./mvnw -Dmaven.test.skip=true package
 workflows:
