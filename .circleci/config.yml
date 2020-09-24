@@ -7,7 +7,7 @@ jobs:
     steps:
       
       -run: git update-index --chmod=+x mvnw
-      - run: ./mvnw test
+      -run: ./mvnw test
 
   build:
     docker:
@@ -15,7 +15,7 @@ jobs:
     steps:
      
       -run: git update-index --chmod=+x mvnw
-      - run: ./mvnw -Dmaven.test.skip=true package
+      -run: ./mvnw -Dmaven.test.skip=true package
 workflows:
   version: 2
 
