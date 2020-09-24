@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Giving permissions
           command: chmod +x mvnw
-          name: Test
+      - run:   
           command: ./mvnw test
 
   build:
@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Giving permissions
           command: chmod +x mvnw
-          name: build
+      - run:   
           command: ./mvnw -Dmaven.test.skip=true package
 
 workflows:
