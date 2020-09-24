@@ -6,6 +6,7 @@ jobs:
       - image: circleci/openjdk:stretch
     steps:
       - checkout
+      -run: git update-index --chmod=+x mvnw
       - run: ./mvnw test
 
   build:
@@ -13,6 +14,7 @@ jobs:
       - image: circleci/openjdk:stretch
     steps:
       - checkout
+      -run: git update-index --chmod=+x mvnw
       - run: ./mvnw -Dmaven.test.skip=true package
 workflows:
   version: 2
