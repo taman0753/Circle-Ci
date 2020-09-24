@@ -6,14 +6,22 @@ jobs:
       - image: circleci/openjdk:stretch
     steps:
       - checkout
-      - run: ./mvnw test
+      - run:
+          name: Giving permissions
+          command: chmod +x mvnw
+          name: Test
+          command: ./mvnw test
 
   build:
     docker:
       - image: circleci/openjdk:stretch
     steps:
       - checkout
-      - run: ./mvnw -Dmaven.test.skip=true package
+      - run:
+          name: Giving permissions
+          command: chmod +x mvnw
+          name: build
+          command: ./mvnw -Dmaven.test.skip=true package
 
 workflows:
   version: 2
