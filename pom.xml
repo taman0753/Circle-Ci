@@ -19,7 +19,13 @@
 	</properties>
 	<distributionManagement>
    
-         <downloadUrl>https://github.com/taman0753/Circle-Ci/tree/circleci-project-setup</downloadUrl>
+         <repositories>
+        <repository>
+              <id>repository.springframework.maven.release</id>
+              <name>Spring Framework Maven Release Repository</name>
+              <url>http://maven.springframework.org/release</url>
+        </repository>
+		 </repositories>
          
          </distributionManagement>
 
