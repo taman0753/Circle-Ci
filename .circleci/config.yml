@@ -1,6 +1,17 @@
 version: 2.0
 
 jobs:
+   deploy:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
+      - checkout
+      - run:
+          name: Giving permissions
+          command: chmod +x mvnw
+      - run:   
+          command: ./mvnw deploy
+
   test:
     docker:
       - image: circleci/openjdk:stretch
@@ -32,3 +43,6 @@ workflows:
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test
