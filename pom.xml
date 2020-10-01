@@ -17,6 +17,11 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<distributionManagement>
+   
+         <downloadUrl>https://github.com/taman0753/Circle-Ci/tree/circleci-project-setup</downloadUrl>
+         <status>deployed</status>
+         </distributionManagement>
 
 	<dependencies>
 		<dependency>
