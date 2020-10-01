@@ -1,7 +1,7 @@
 version: 2.0
 
 jobs:
-   deploy:
+  deploy:
     docker:
       - image: circleci/openjdk:stretch
     steps:
