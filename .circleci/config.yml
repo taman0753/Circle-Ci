@@ -4,11 +4,13 @@ dependencies:
 
 jobs:
  test:
-   override:
-    - mvn -o surefire:test
+   steps:
+     override:
+       - mvn -o surefire:test
 
  deployment:
-   main:
-     branch: master
-     commands:
-       - mvn -s .circleci.settings.xml -DskipTests deploy
+   steps:
+    main:
+      branch: master
+       commands:
+        - mvn -s .circleci.settings.xml -DskipTests deploy
