@@ -1,58 +1,13 @@
-orbs: # declare what orbs we are going to use
-  node: circleci/node@2.0.2
+dependencies:
+  override:
+    - mvn -DskipTests clean install dependency:resolve-plugins dependency:go-offline
 
-version: 2.1
+test:
+  override:
+    - mvn -o surefire:test
 
-jobs:
-  deploy:
-        machine: # executor type
-            image: ubuntu-1604:201903-01
-
-        steps:
-            - checkout
-            - run:
-               name: install
-               command: install-npm
-            - run:
-               name: Giving permissions
-               command: npm install --global surge
-            - run:
-               command: surge --project index.html --domain demo123.surge.sh
-      
-
-        
-
-  test:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Giving permissions
-          command: chmod +x mvnw
-      - run:   
-          command: ./mvnw test
-
-  build:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Giving permissions
-          command: chmod +x mvnw
-      - run:   
-          command: ./mvnw -Dmaven.test.skip=true package
-
-workflows:
-  version: 2.1
-
-  build-test:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - test
+deployment:
+  main:
+    branch: master
+    commands:
+      - mvn -s .circleci.settings.xml -DskipTests deploy
