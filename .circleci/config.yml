@@ -1,4 +1,7 @@
---- 
+version: 2
+orbs:
+  node: circleci/node@4.0.1
+
 jobs: 
   build: 
     docker: 
@@ -48,4 +51,4 @@ workflows:
         deploy: 
           requires: 
             - test
-  version: 2
+
