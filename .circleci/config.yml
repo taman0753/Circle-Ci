@@ -1,6 +1,7 @@
+orbs: # declare what orbs we are going to use
+  node: circleci/node@2.0.2
+
 version: 2.1
-orbs:
-  node: circleci/node@4.0.1
 
 jobs:
   deploy:
