@@ -1,16 +1,11 @@
 version: 2.0
 
 jobs:
-  deploy:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Giving permissions
-          command: chmod +x mvnw
-      - run:   
-          command: ./mvnw deploy
+  deployment:
+  production:
+    branch: master
+    commands:
+      - surge --project index.html --domain demo123.surge.sh
 
   test:
     docker:
