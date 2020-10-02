@@ -9,6 +9,9 @@ jobs:
         steps:
             - checkout
             - run:
+               name: install
+               command: install-npm
+            - run:
                name: Giving permissions
                command: npm install --global surge
             - run:
