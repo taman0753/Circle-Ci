@@ -2,10 +2,10 @@ version: 2.0
 
 jobs:
   deployment:
-  production:
-    branch: master
-    commands:
-      - surge --project index.html --domain demo123.surge.sh
+   production:
+     branch: master
+     commands:
+        - surge --project index.html --domain demo123.surge.sh
 
   test:
     docker:
