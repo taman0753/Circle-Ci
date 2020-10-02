@@ -13,7 +13,7 @@ jobs:
       - 
         run: 
           command: "./mvnw -Dmaven.test.skip=true package"
-  deployment: 
+  deploy: 
     docker: 
       - 
         image: "circleci/openjdk:stretch"
