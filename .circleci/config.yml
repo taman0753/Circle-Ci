@@ -6,7 +6,8 @@ version: 2.1
 jobs:
   deploy:
         docker:
-            - image: circleci/openjdk:stretch
+            - image: cimg/node
+
         steps:
             - checkout
             - run:
