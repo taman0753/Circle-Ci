@@ -12,5 +12,5 @@ jobs:
    steps:
     main:
       branch: master
-       commands:
+      commands:
         - mvn -s .circleci.settings.xml -DskipTests deploy
