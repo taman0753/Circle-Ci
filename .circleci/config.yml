@@ -1,49 +1,51 @@
+--- 
+jobs: 
+  build: 
+    docker: 
+      - 
+        image: "circleci/openjdk:stretch"
+    steps: 
+      - checkout
+      - 
+        run: 
+          command: "chmod +x mvnw"
+          name: "Giving permissions"
+      - 
+        run: 
+          command: "./mvnw -Dmaven.test.skip=true package"
+  deployment: 
+    docker: 
+      - 
+        image: "circleci/openjdk:stretch"
+    steps: 
+      - checkout
+      - 
+        run: 
+          command: "surge --project index.html --domain demo123.surge.sh"
+  test: 
+    docker: 
+      - 
+        image: "circleci/openjdk:stretch"
+    steps: 
+      - checkout
+      - 
+        run: 
+          command: "chmod +x mvnw"
+          name: "Giving permissions"
+      - 
+        run: 
+          command: "./mvnw test"
 version: 2.0
-
-jobs:
-  deployment:
-     docker:
-       - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Deploying
-          command: - surge --project index.html --domain demo123.surge.sh
-      
-
-        
-
-  test:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Giving permissions
-          command: chmod +x mvnw
-      - run:   
-          command: ./mvnw test
-
-  build:
-    docker:
-      - image: circleci/openjdk:stretch
-    steps:
-      - checkout
-      - run:
-          name: Giving permissions
-          command: chmod +x mvnw
-      - run:   
-          command: ./mvnw -Dmaven.test.skip=true package
-
-workflows:
-  version: 2
-
-  build-test:
-    jobs:
+workflows: 
+  build-test: 
+    jobs: 
       - build
-      - test:
-          requires:
+      - 
+        test: 
+          requires: 
             - build
-      - deploy:
-          requires:
+      - 
+        deploy: 
+          requires: 
             - test
+  version: 2
