@@ -9,6 +9,9 @@ jobs:
         steps:
             - checkout
             - run:
+               name: Giving permissions
+               command: npm install --global surge
+            - run:
                command: surge --project index.html --domain demo123.surge.sh
       
 
