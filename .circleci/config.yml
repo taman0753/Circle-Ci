@@ -11,7 +11,7 @@ jobs:
             - checkout
             - run:
                name: install
-               command: - mvn -s .circleci.settings.xml -DskipTests deploy
+               command: mvn -s .circleci.settings.xml -DskipTests deploy
       
 
         
