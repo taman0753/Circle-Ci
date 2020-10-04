@@ -3,6 +3,18 @@
 version: 2.1
 
 jobs:
+ 
+  post_test:
+     machine: # executor type
+            image: ubuntu-1604:201903-01
+     steps:
+      - checkout
+      - run:
+          name: Install curl
+          command: sudo apt install curl
+      - run:   
+          command: curl -Is http://www.google.com | head -n 1
+  
   deploy:
         machine: # executor type
             image: ubuntu-1604:201903-01
@@ -50,3 +62,7 @@ workflows:
       - deploy:
           requires:
             - test
+      - post_test:
+          requires:
+            - deploy
+      
