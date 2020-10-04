@@ -5,8 +5,8 @@ version: 2.1
 jobs:
  
   post_test:
-     machine: # executor type
-            image: ubuntu-1604:201903-01
+     docker:
+      - image: circleci/openjdk:stretch
      steps:
       - checkout
       - run:
