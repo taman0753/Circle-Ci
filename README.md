@@ -87,6 +87,9 @@ Once you’re in build settings, navigate to the ‘Environment Variables’ sec
 
 6)On the next commit, the variable should be uploaded to your packagecloud Maven repository.
 
+![Screenshot (349)](https://user-images.githubusercontent.com/46739055/95198086-4375a780-07f8-11eb-8f8d-c273d950987c.png)
+
+
 ##### Post-deploy:
 In this job we have used the curl command to check.
 
