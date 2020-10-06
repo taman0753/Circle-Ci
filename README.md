@@ -1,6 +1,6 @@
-##Spring Application - A complete workflow
+## Spring Application - A complete workflow
 
-####This is will help you to build , test , deploy and post-deploy check a java spring application using maven via Circle Ci.
+#### This is will help you to build , test , deploy and post-deploy check a java spring application using maven via Circle Ci.
 
 Step 1) Uplaod the complete java project on Github. 
 
@@ -16,19 +16,19 @@ Step 3) You have to now add yml file to define the workflow.
 
 Step 4) Understanding the jobs :
 
-#####Build- In this job we have used docker-image as a executor.
+##### Build- In this job we have used docker-image as a executor.
 
 chmod +x mvnw - To give permission to run maven commands.
 
 ./mvnw -Dmaven.test.skip=true package - To build
 
-#####Test- In this job we have used docker-image as a executor
+##### Test- In this job we have used docker-image as a executor
 
 chmod +x mvnw - To give permission to run maven commands.
 
 ./mvnw test -To run test script.
 
-#####Deploy - In this job we have used ubuntu-image as a executor.  (On packagecloud)
+##### Deploy - In this job we have used ubuntu-image as a executor.  (On packagecloud)
 
 Follow the below steps:
 
@@ -58,7 +58,7 @@ In the <distributionManagement/> section of the project’s pom.xml file, we tel
   </snapshotRepository>
 </distributionManagement>
 
-#######Note:  that id is set to packagecloud-examplecorp, which is what we used in our .circleci.settings.xml above. Also in the url add thr url to your repo on packagecloud.
+###### Note:  that id is set to packagecloud-examplecorp, which is what we used in our .circleci.settings.xml above. Also in the url add thr url to your repo on packagecloud.
 
 3)Finally, in the <build/> section of pom.xml, add the plugin that lets Maven natively deploy artifacts to packagecloud repositories.
 
@@ -81,6 +81,6 @@ Once you’re in build settings, navigate to the ‘Environment Variables’ sec
 
 6)On the next commit, the variable should be uploaded to your packagecloud Maven repository.
 
-#####Post-deploy:
+##### Post-deploy:
 In this job we have used the curl command to check.
 
