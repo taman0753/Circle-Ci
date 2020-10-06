@@ -33,6 +33,8 @@ chmod +x mvnw - To give permission to run maven commands.
 Follow the below steps:
 
 1)Add the following code to .circleci.settings.xml in your Maven project:
+
+```
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <servers>
     <server>
@@ -40,12 +42,14 @@ Follow the below steps:
       <password>${env.EXAMPLECORP_PACKAGECLOUD_API_TOKEN}</password>
     </server>
   </servers>
-</settings>
+</settings> 
+```
 
 2)If you haven’t already, get a free Maven repository from packagecloud. (https://packagecloud.io/l/maven-repository)
 
 In the <distributionManagement/> section of the project’s pom.xml file, we tell Maven to deploy to our newly-created, private Maven repository:
 
+```
 <distributionManagement>
   <repository>
     <id>packagecloud-examplecorp</id>
@@ -56,11 +60,13 @@ In the <distributionManagement/> section of the project’s pom.xml file, we tel
     <url>packagecloud+https://packagecloud.io/exampleCorp/core</url>
   </snapshotRepository>
 </distributionManagement>
+```
 
 ###### Note:  that id is set to packagecloud-examplecorp, which is what we used in our .circleci.settings.xml above. Also in the url add thr url to your repo on packagecloud.
 
 3)Finally, in the <build/> section of pom.xml, add the plugin that lets Maven natively deploy artifacts to packagecloud repositories.
 
+```
 <build>
   <extensions>
     <extension>
@@ -70,6 +76,7 @@ In the <distributionManagement/> section of the project’s pom.xml file, we tel
     </extension>
   </extensions>
 </build>
+```
 
 4)Circle ci setup:
 
