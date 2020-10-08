@@ -85,6 +85,7 @@ workflows:
           requires:
             - deploy
       - slack_notify:
+          when: always
           requires:
             - post_test
       
