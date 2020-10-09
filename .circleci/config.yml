@@ -10,7 +10,7 @@ nightly:
            cron: "0 7 * * *"
 jobs:
  
- lambdatest/with_tunnel:
+  lambdatest/with_tunnel:
     tunnel_name: chrome
     steps:
       - checkout
