@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   slack: circleci/slack@3.4.2
-  cypress: cypress-io/cypress@1.1.0
+  lambda-tunnel: lambdatest/lambda-tunnel@0.0.1
 
 nightly:
      triggers:
@@ -10,8 +10,15 @@ nightly:
            cron: "0 7 * * *"
 jobs:
  
-  test_2:
-      - cypress/run
+ lambdatest/with_tunnel:
+    tunnel_name: chrome
+    steps:
+      - checkout
+      - run:
+          name: Install curl
+          command: mvn test
+      
+
          
   slack_notify:
         machine: # executor type
