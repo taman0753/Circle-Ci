@@ -13,7 +13,8 @@ nightly:
 jobs:
  
   test2:
-      - lambdatest/with_tunnel:
+          machine: # executor type
+             image: ubuntu-1604:201903-01
           tunnel_name: chrome
           lambdatest_email: demogithu3@gmail.com
           steps:
