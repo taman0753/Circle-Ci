@@ -12,16 +12,12 @@ nightly:
            cron: "0 7 * * *"
 jobs:
  
-  test_2:
-       machine: # executor type
-            image: ubuntu-1604:201903-01
-       steps:
-          - lambdatest/with_tunnel:
-                 tunnel_name: chrome
-                 lambdatest_email: demogithub3@gmail.com
-                 steps:
-                     - run:
-                         command: mvn test
+  - lambdatest/with_tunnel:
+          tunnel_name: chrome
+          lambdatest_email: demogithub3@gmail.com
+          steps:
+            - run:
+                command: mvn test
          
   slack_notify:
         machine: # executor type
