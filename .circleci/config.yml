@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   slack: circleci/slack@3.4.2
+  lambda-tunnel: lambdatest/lambda-tunnel@1.0.4
 
 nightly:
      triggers:
@@ -11,6 +12,14 @@ nightly:
            cron: "0 7 * * *"
 jobs:
  
+  test2:
+      - lambdatest/with_tunnel:
+          tunnel_name: chrome
+          lambdatest_email: demogithu3@gmail.com
+          steps:
+            - run:
+                command: mvn test
+  
   slack_notify:
         machine: # executor type
             image: ubuntu-1604:201903-01
@@ -75,6 +84,9 @@ workflows:
   build-test:
     jobs:
       - build
+      - test2:
+          requires:
+            - build
       - test:
           requires:
             - build
