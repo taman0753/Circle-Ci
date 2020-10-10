@@ -15,7 +15,9 @@ jobs:
       - image: cimg/node:12.16
     steps:
       - checkout
-      - run: install-npm
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
 
          
   slack_notify:
