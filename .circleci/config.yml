@@ -22,6 +22,8 @@ jobs:
           name: Install unitjs
           command: npm install unit.js
       - run:   
+          command: command: npm install --save-dev jest
+      - run:
           command: npm run test
   
   test_2:
