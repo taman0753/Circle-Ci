@@ -15,7 +15,7 @@ jobs:
       - image: cimg/node:12.16
     steps:
       - checkout
-      - run: node --version
+      - run: install-npm
 
          
   slack_notify:
