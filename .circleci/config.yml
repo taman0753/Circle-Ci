@@ -28,6 +28,9 @@ jobs:
           command: npm install --save-dev jest
       - run:
           command: npm run test
+      - slack/status:
+                failure_message: Test-3 Failed
+                success_message: Test -3 Success
   
   test_2:
     docker:
@@ -42,19 +45,22 @@ jobs:
           command: npm install --save-dev jest
       - run:   
           command: npm run test
+      - slack/status:
+                failure_message: Test-2 Failed
+                success_message: Test-2 Success
 
          
-  slack_notify:
-        machine: # executor type
-            image: ubuntu-1604:201903-01
-        steps:
-           - slack/notify:
+  ##slack_notify:
+       ## machine: # executor type
+           ## image: ubuntu-1604:201903-01
+       ## steps:
+          ## - slack/notify:
                 
-                color: '#42e2f4'
-                message: This is a custom message notification
-           - slack/status:
-                failure_message: Failed
-                success_message: Success
+               ## color: '#42e2f4'
+                ##message: This is a custom message notification
+           ##- slack/status:
+               ## failure_message: Failed
+                ##success_message: Success
           
   
   
@@ -69,6 +75,9 @@ jobs:
           command: sudo apt install curl
       - run:   
           command: curl -Is http://www.google.com | head -n 1
+      - slack/status:
+                failure_message: Post-test Failed
+                success_message: Post-test Success
   
   deploy:
         machine: # executor type
@@ -79,11 +88,14 @@ jobs:
             - run:
                name: install
                command: mvn -s .circleci.settings.xml -DskipTests deploy
+            - slack/status:
+                failure_message: Deployment Failed
+                success_message: Deployment Success
       
 
         
 
-  test:
+  test_1:
     docker:
       - image: circleci/openjdk:stretch
     steps:
@@ -93,6 +105,9 @@ jobs:
           command: chmod +x mvnw
       - run:   
           command: ./mvnw test
+      - slack/status:
+                failure_message: Test-1 Failed
+                success_message: Test-1 Success
 
   build:
     docker:
@@ -104,6 +119,9 @@ jobs:
           command: chmod +x mvnw
       - run:   
           command: ./mvnw -Dmaven.test.skip=true package
+      - slack/status:
+                failure_message: Build Failed
+                success_message: Build Success
 
 workflows:
   version: 2.1
@@ -117,18 +135,16 @@ workflows:
       - test_2:
           requires:
             - build
-      - test:
+      - test_1:
           requires:
             - build
       - deploy:
           requires:
-            - test
+            - test_1
             - test_2
             - test_3
       - post_test:
           requires:
             - deploy
-      - slack_notify:
-          requires:
-            - post_test
+      
       
