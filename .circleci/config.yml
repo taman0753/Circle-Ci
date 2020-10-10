@@ -52,7 +52,9 @@ jobs:
                 
                 color: '#42e2f4'
                 message: This is a custom message notification
-               
+           - slack/status:
+                fail_only: true
+          
   
   
   
