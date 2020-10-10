@@ -10,6 +10,20 @@ nightly:
            cron: "0 7 * * *"
 jobs:
  
+  test_3:
+    docker:
+      - image: cimg/node:12.16
+    steps:
+      - checkout
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
+      - run:
+          name: Install unitjs
+          command: npm install unit.js
+      - run:   
+          command: jest test/example.js
+  
   test_2:
     docker:
       - image: cimg/node:12.16
@@ -89,6 +103,9 @@ workflows:
   build-test:
     jobs:
       - build
+      - test_3:
+          requires:
+            - build
       - test_2:
           requires:
             - build
@@ -98,6 +115,8 @@ workflows:
       - deploy:
           requires:
             - test
+            - test_2
+            - test_3
       - post_test:
           requires:
             - deploy
