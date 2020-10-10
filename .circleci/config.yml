@@ -12,11 +12,11 @@ jobs:
  
   test_2:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:6
     steps:
       - checkout
       - node/install:
-          install-yarn: true
+          install-npm: true
       - run: node --version
 
          
