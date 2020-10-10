@@ -22,7 +22,7 @@ jobs:
           name: Install unitjs
           command: npm install unit.js
       - run:   
-          command: jest test/example.js
+          command: npm run test
   
   test_2:
     docker:
