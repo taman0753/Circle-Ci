@@ -15,8 +15,6 @@ jobs:
       - image: cimg/node:12.16
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
       - run: node --version
 
          
