@@ -93,3 +93,24 @@ Once you’re in build settings, navigate to the ‘Environment Variables’ sec
 ##### Post-deploy:
 In this job we have used the curl command to check.
 
+##### Sonar Code Analysis:
+
+To generate a token, to go User > My Account > Security (on your sonar account) Your existing tokens are listed here, each with a Revoke button.
+
+The form at the bottom of the page allows you to generate new tokens. Once you click the Generate button, you will see the token value. 
+
+Copy it immediately ; once you dismiss the notification you will not be able to retrieve it.
+
+Also you will need to setup
+
+sonar.organization=name of organization
+
+sonar.projectKey=project-key
+
+sonar.java.binaries=Comma-separated paths to directories containing the compiled bytecode files corresponding to your source files. 
+
+sonar.java.test.binaries=Comma-separated paths to directories containing the compiled bytecode files corresponding to your test files
+
+in your repo in a file "sonar-project.properties"
+
+##### Note  : Off the automatic analysis from SonarQube settings.
