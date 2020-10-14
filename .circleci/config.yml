@@ -14,7 +14,7 @@ nightly:
            
 jobs:
  
-   sonar_test:
+  sonar_test:
         docker:
            - image: 'node:latest'
         steps:
