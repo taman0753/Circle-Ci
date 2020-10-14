@@ -101,6 +101,8 @@ The form at the bottom of the page allows you to generate new tokens. Once you c
 
 Copy it immediately ; once you dismiss the notification you will not be able to retrieve it.
 
+Add it to env variables in Circle ci "Sonar_Token"
+
 Also you will need to setup
 
 sonar.organization=name of organization
