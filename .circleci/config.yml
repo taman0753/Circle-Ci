@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   slack: circleci/slack@3.4.2
   node: circleci/node@4.1.0
+  sonarcloud: sonarsource/sonarcloud@1.0.2
 
 nightly:
      triggers:
@@ -13,6 +14,12 @@ nightly:
            
 jobs:
  
+   sonar_test:
+        docker:
+           - image: 'node:latest'
+        steps:
+           - checkout
+           - sonarcloud/scan
   test_3:
     docker:
       - image: cimg/node:12.16
@@ -146,5 +153,8 @@ workflows:
       - post_test:
           requires:
             - deploy
+      - sonar_test:
+          requires:
+            - post_test
       
       
