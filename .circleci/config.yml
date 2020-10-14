@@ -136,7 +136,7 @@ workflows:
 
   build-test:
     jobs:
-      - build
+      - build:
           post-steps:
             - jira/notify
       - test_3:
