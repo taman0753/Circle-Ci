@@ -4,6 +4,7 @@ orbs:
   slack: circleci/slack@3.4.2
   node: circleci/node@4.1.0
   sonarcloud: sonarsource/sonarcloud@1.0.2
+  jira: circleci/jira@1.0.5
 
 nightly:
      triggers:
@@ -136,6 +137,8 @@ workflows:
   build-test:
     jobs:
       - build
+          post-steps:
+            - jira/notify
       - test_3:
           requires:
             - build
