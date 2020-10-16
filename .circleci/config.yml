@@ -22,21 +22,28 @@ jobs:
         steps:
            - checkout
            - sonarcloud/scan
+ 
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
       - checkout
       - newman/newman-run:
           collection: ./CircleCitest.postman_collection.json
-  test_3:
-    docker:
-      - image: cimg/node:12.16
+ 
+  cache-dependencies:
+    machine: # executor type
+            image: ubuntu-1604:201903-01 
+    
     steps:
-      steps:
       - save_cache:
           key: my-cache
           paths:
             - test/example.js
+  test_3:
+    docker:
+      - image: cimg/node:12.16
+    steps:
+      - checkout
       - node/install-packages:
           
           override-ci-command: npm install
@@ -139,6 +146,10 @@ workflows:
       - build:
           post-steps:
             - jira/notify
+      - cache-dependencies:
+          requires:
+            - build
+            
       - test_3:
           requires:
             - build
