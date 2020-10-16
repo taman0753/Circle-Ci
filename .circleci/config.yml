@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout
       - newman/newman-run:
-          collection: ./basictest.postman_collection.json
+          collection: ./test.postman_collection.json
   test_3:
     docker:
       - image: cimg/node:12.16
