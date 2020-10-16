@@ -5,6 +5,7 @@ orbs:
   node: circleci/node@4.1.0
   sonarcloud: sonarsource/sonarcloud@1.0.2
   jira: circleci/jira@1.2.2
+  newman: postman/newman@0.0.2
 
 nightly:
      triggers:
@@ -21,6 +22,12 @@ jobs:
         steps:
            - checkout
            - sonarcloud/scan
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./CircleCi.postman_collection.json
   test_3:
     docker:
       - image: cimg/node:12.16
@@ -161,6 +168,9 @@ workflows:
                 environment_type: production
                 job_type: deployment
       - sonar_test:
+          requires:
+            - post_test
+      - newman-collection-run:
           requires:
             - post_test
       
