@@ -65,18 +65,7 @@ jobs:
                 success_message: Test-2 Success
 
          
-  ##slack_notify:
-       ## machine: # executor type
-           ## image: ubuntu-1604:201903-01
-       ## steps:
-          ## - slack/notify:
-                
-               ## color: '#42e2f4'
-                ##message: This is a custom message notification
-           ##- slack/status:
-               ## failure_message: Failed
-                ##success_message: Success
-          
+  
   
   
   
