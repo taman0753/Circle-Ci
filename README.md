@@ -116,3 +116,24 @@ sonar.java.test.binaries=Comma-separated paths to directories containing the com
 in your repo in a file "sonar-project.properties"
 
 ##### Note  : Off the automatic analysis from SonarQube settings.
+
+##### POSTMAN API TESTING:
+
+With the Newman orb for CircleCI, we have built a readymade integration where you can trigger collection runs in your CircleCI pipelines with just a configuration.
+
+The Newman orb exposes the newman/newman-run command that you can use in your CircleCI configuration
+
+Assuming you have your collection file exported to ./collection.json at the root of your repository,
+
+```
+version: 2.1
+orbs:
+  newman: postman/newman@0.0.2
+jobs:
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./collection.json
+```
