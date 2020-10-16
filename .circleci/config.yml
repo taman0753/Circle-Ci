@@ -135,7 +135,7 @@ jobs:
       - run:   
           command: ./mvnw -Dmaven.test.skip=true package
       - store_artifacts:
-                path: /artifact
+                path: /artifact/Demo1-0.0.1-20201016.061321-56.jar
       - slack/status:
                 failure_message: Build Failed
                 success_message: Build Success
