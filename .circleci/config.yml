@@ -134,6 +134,8 @@ jobs:
           command: chmod +x mvnw
       - run:   
           command: ./mvnw -Dmaven.test.skip=true package
+      - store_artifacts:
+                path: /artifact
       - slack/status:
                 failure_message: Build Failed
                 success_message: Build Success
