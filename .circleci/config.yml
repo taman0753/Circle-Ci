@@ -32,7 +32,11 @@ jobs:
     docker:
       - image: cimg/node:12.16
     steps:
-      - checkout
+      steps:
+      - save_cache:
+          key: my-cache
+          paths:
+            - test/example.js
       - node/install-packages:
           
           override-ci-command: npm install
