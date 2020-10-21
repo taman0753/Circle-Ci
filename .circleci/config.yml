@@ -174,6 +174,7 @@ workflows:
                 
                 environment_type: production
                 job_type: deployment
+                issueKeys: DEMO-1
       - sonar_test:
           requires:
             - post_test
