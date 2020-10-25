@@ -6,7 +6,7 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
  # jira: circleci/jira@1.2.2
   newman: postman/newman@0.0.2
-  cypress: cypress-io/cypress@1.26.0
+  cypress: datacamp/cypress@0.0.7
 
 nightly:
      triggers:
