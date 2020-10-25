@@ -41,10 +41,11 @@ jobs:
           paths:
             - test/example.js
   test_4:
+    - cypress/run
     # docker:
      # - image: 'cypress/base-12'
      #steps:
-      - cypress/run
+      #- cypress/run
   
   test_3:
     docker:
