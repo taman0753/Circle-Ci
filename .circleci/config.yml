@@ -44,8 +44,8 @@ jobs:
      docker:
       - image: 'cypress/base-12'
      steps:
-      - cypress/run:
-           yarn: true
+      - cypress/run
+           
   
   test_3:
     docker:
