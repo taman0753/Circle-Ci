@@ -6,6 +6,7 @@ orbs:
   sonarcloud: sonarsource/sonarcloud@1.0.2
  # jira: circleci/jira@1.2.2
   newman: postman/newman@0.0.2
+  cypress: cypress-io/cypress@1.26.0
 
 nightly:
      triggers:
@@ -39,6 +40,12 @@ jobs:
           key: my-cache
           paths:
             - test/example.js
+  test_4:
+     docker:
+      - image: 'cypress/base:<< parameters.node >>'
+     steps:
+      - cypress/run
+  
   test_3:
     docker:
       - image: cimg/node:12.16
@@ -152,6 +159,9 @@ workflows:
           requires:
             - build
             
+      - test_4:
+          requires:
+            - build
       - test_3:
           requires:
             - build
