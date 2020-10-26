@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "jest",
-    "cy:run": "cypress run"
+    "cypress": "node_modules\\.bin\\cypress open",
++   "e2e": "node_modules\\.bin\\cypress run"
   }
 }
