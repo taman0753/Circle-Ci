@@ -107,6 +107,17 @@ jobs:
                 failure_message: Post-test Failed
                 success_message: Post-test Success
   
+  netlif_deploy:
+     docker:
+      - image: circleci/openjdk:stretch
+     steps:
+      - checkout
+      - run:
+          name: Install curl
+          command: sudo apt install curl
+      - run:   
+          command: curl -X POST -d {} ${hook}
+  
   deploy:
         machine: # executor type
             image: ubuntu-1604:201903-01
