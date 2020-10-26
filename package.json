@@ -1,6 +1,6 @@
 {
   "scripts": {
     "test": "jest",
-    "cypress:open": "cypress open"
+    "cy:run": "cypress run"
   }
 }
