@@ -45,7 +45,7 @@ jobs:
       - image: 'cypress/base:12'
      steps:
       - checkout
-       - run:
+      - run:
             name: install
             command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
       - cypress/install
