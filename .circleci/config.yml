@@ -42,7 +42,7 @@ jobs:
             - test/example.js
   test_4:
      docker:
-      - image: 'cypress/base-12'
+      - image: 'cypress/base:<< parameters.node >>'
      steps:
       - cypress/install
            
