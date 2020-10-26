@@ -44,6 +44,9 @@ jobs:
      docker:
       - image: 'cypress/base:12'
      steps:
+      - run:
+          name: Install npm
+          command: npm install
       - cypress/install
            
   
