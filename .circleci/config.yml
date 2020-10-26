@@ -50,7 +50,7 @@ jobs:
             command: npm install cypress --save-dev
       - run:
             name: install
-            command: npm run cypress:open
+            command: (npm bin)/cypress open
       
           
             
