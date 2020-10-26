@@ -44,7 +44,7 @@ jobs:
      docker:
       - image: 'cypress/base-12'
      steps:
-      - cypress/run
+      - cypress/install
            
   
   test_3:
