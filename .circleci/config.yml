@@ -44,10 +44,12 @@ jobs:
      docker:
       - image: 'cypress/base:12'
      steps:
-      - run:
-          name: Install npm
-          command: npm install
-      - cypress/install
+       - cypress/install:
+          pre-steps:
+            - run: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
+      - cypress/run:
+          requires:
+            - cypress/install
            
   
   test_3:
