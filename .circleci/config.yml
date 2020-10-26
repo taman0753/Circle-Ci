@@ -48,12 +48,10 @@ jobs:
       - checkout
       - run:
             name: install npm
-            command: npm install
+            command: npm i cypress --save-dev
       - run:
-            name: install npm modules
-            command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
-      - cypress/install
-      - cypress/run
+            name: run
+            command: npm run cypress
       
       
       
