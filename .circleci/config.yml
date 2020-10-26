@@ -52,6 +52,10 @@ jobs:
             name: install npm modules
             command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
       - cypress/install
+      - run:
+            name: Test
+            command: npm run cy:run -- --record --spec "cypress/integration/my-spec.js"
+      
       
           
             
