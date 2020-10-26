@@ -189,8 +189,8 @@ workflows:
       - percy/finalize_all:
           requires:
             - test_1
-            - test_2
-            - test_3
+            #- test_2
+            #- test_3
       - netlify_deploy:
           requires:
             - test_1
