@@ -47,7 +47,7 @@ jobs:
       - checkout
       - run:
             name: install npm
-            command: npm install
+            command: npm install cypress --save-dev
       - run:
             name: install
             command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
