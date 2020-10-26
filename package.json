@@ -2,6 +2,6 @@
   "scripts": {
     "test": "jest",
     "cypress": "node_modules\\.bin\\cypress open",
-+   "e2e": "node_modules\\.bin\\cypress run"
+    "e2e": "node_modules\\.bin\\cypress run"
   }
 }
