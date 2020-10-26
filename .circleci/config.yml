@@ -176,10 +176,10 @@ workflows:
           requires:
             - build
       - percy/finalize_all:
-         requires:
-           - test_1
-           - test_2
-           - test_3
+          requires:
+            - test_1
+            - test_2
+            - test_3
       - deploy:
           requires:
             - test_1
