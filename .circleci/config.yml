@@ -52,6 +52,7 @@ jobs:
             name: install
             command: 'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc'
       - cypress/install
+      - cypress/install
           
             
     
