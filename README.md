@@ -137,3 +137,13 @@ jobs:
       - newman/newman-run:
           collection: ./collection.json
 ```
+
+#### Percy-testing:
+
+In your CircleCI project, go to Project settings > Environment Variables.(Create a project in percy if not from : https://percy.io/ by signing up)
+
+Then set PERCY_TOKEN to the write-only token from your Percy project. This token can be found in your Percy project's settings.
+
+We first import the percy/agent orb and then once all tests have finished, execute percy/finalize_all command from the Orb.(See the config.yml file for the code)
+
+When you save all the changes refresh your percy project dashboard and you will see the visual-results of the test.
