@@ -107,7 +107,7 @@ jobs:
                 failure_message: Post-test Failed
                 success_message: Post-test Success
   
-  netlif_deploy:
+  netlify_deploy:
      docker:
       - image: circleci/openjdk:stretch
      steps:
@@ -191,6 +191,13 @@ workflows:
             - test_1
             - test_2
             - test_3
+      - netlify_deploy:
+          requires:
+            - test_1
+            - test_2
+            - test_3
+            
+          
       - deploy:
           requires:
             - test_1
