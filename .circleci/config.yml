@@ -90,34 +90,21 @@ jobs:
                
 
   percy:
-    docker:
-      - image: cimg/node:12.16
+    machine: # executor type
+            image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - node/install-packages:
+      
+      - run:
+          name: Install percy
+          command: npm install   
           
-          override-ci-command: npm install
       - run:
           name: Install percy
           command: npm install --save-dev percy
       - run:
           name: Install Headless Chrome dependencies
-          command: >
-              sudo apt-get install -yq \
-
-              gconf-service libasound2 libatk1.0-0 libatk-bridge2.0-0 libc6 libcairo2
-              libcups2 libdbus-1-3 \
-
-              libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0
-              libglib2.0-0 libgtk-3-0 libnspr4 \
-
-              libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1
-              libxcb1 libxcomposite1 libxcursor1 \
-
-              libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1
-              libxtst6 ca-certificates \
-
-              fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+          command: sudo apt-get install fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
       - run:   
           command: npm i puppeteer
       - run:   
@@ -155,18 +142,18 @@ jobs:
       - run:   
           command: curl -X POST -d {} ${hook}
   
-#  deploy:
-      #  machine: # executor type
-         #   image: ubuntu-1604:201903-01
+  deploy:
+        machine: # executor type
+            image: ubuntu-1604:201903-01
 
-      #  steps:
-         #   - checkout
-          #  - run:
-          #     name: install
-           #    command: mvn -s .circleci.settings.xml -DskipTests deploy
-           # - slack/status:
-            #    failure_message: Deployment Failed
-            #    success_message: Deployment Success
+        steps:
+            - checkout
+            - run:
+               name: install
+               command: mvn -s .circleci.settings.xml -DskipTests deploy
+            - slack/status:
+                failure_message: Deployment Failed
+                success_message: Deployment Success
       
 
         
@@ -238,14 +225,14 @@ workflows:
             - test_3
             
           
-    #  - deploy:
-      #    requires:
-        #    - test_1
-        #    - test_2
-         #   - test_3
+      - deploy:
+          requires:
+            - test_1
+            - test_2
+            - test_3
       - post_test
-          #requires:
-           # - deploy
+          requires:
+            - deploy
           #post-steps:
            # - jira/notify:
                 
