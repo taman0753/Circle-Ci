@@ -204,8 +204,8 @@ workflows:
         #    - test_2
          #   - test_3
       - post_test:
-          requires:
-            - deploy
+          #requires:
+           # - deploy
           #post-steps:
            # - jira/notify:
                 
