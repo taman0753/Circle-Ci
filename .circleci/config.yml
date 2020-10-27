@@ -230,7 +230,7 @@ workflows:
             - test_1
             - test_2
             - test_3
-      - post_test
+      - post_test:
           requires:
             - deploy
           #post-steps:
