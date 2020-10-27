@@ -102,9 +102,10 @@ jobs:
       - run:
           name: Install percy
           command: npm install --save-dev percy
-      - run:
-          name: Install Headless Chrome dependencies
-          command: sudo apt-get install fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+      #- run:
+          #name: Install Headless Chrome dependencies
+          #command: sudo apt-get install fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+      - puppeteer/install
       - run:   
           command: npm i puppeteer
       - run:   
