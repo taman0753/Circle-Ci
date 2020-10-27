@@ -118,18 +118,18 @@ jobs:
       - run:   
           command: curl -X POST -d {} ${hook}
   
-  deploy:
-        machine: # executor type
-            image: ubuntu-1604:201903-01
+#  deploy:
+      #  machine: # executor type
+         #   image: ubuntu-1604:201903-01
 
-        steps:
-            - checkout
-            - run:
-               name: install
-               command: mvn -s .circleci.settings.xml -DskipTests deploy
-            - slack/status:
-                failure_message: Deployment Failed
-                success_message: Deployment Success
+      #  steps:
+         #   - checkout
+          #  - run:
+          #     name: install
+           #    command: mvn -s .circleci.settings.xml -DskipTests deploy
+           # - slack/status:
+            #    failure_message: Deployment Failed
+            #    success_message: Deployment Success
       
 
         
@@ -198,11 +198,11 @@ workflows:
             - test_3
             
           
-      - deploy:
-          requires:
-            - test_1
-            - test_2
-            - test_3
+    #  - deploy:
+      #    requires:
+        #    - test_1
+        #    - test_2
+         #   - test_3
       - post_test:
           requires:
             - deploy
