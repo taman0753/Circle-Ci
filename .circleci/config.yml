@@ -100,7 +100,7 @@ jobs:
           name: Install percy
           command: npm install --save-dev percy
       - run:   
-          command: npx percy snapshot sites/
+          command: npx percy snapshot _site/
       
      
      
