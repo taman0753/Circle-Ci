@@ -88,7 +88,23 @@ jobs:
                 success_message: Test-2 Success
                
 
-         
+  percy:
+    docker:
+      - image: cimg/node:12.16
+    steps:
+      - checkout
+      - node/install-packages:
+          
+          override-ci-command: npm install
+      - run:
+          name: Install percy
+          command: npm install --save-dev percy
+      - run:   
+          command: npx percy snapshot sites/
+      
+     
+     
+  
   
   
   
