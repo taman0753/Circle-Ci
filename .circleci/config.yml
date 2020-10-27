@@ -8,6 +8,7 @@ orbs:
   newman: postman/newman@0.0.2
   #cypress: datacamp/cypress@0.0.7
   percy: percy/agent@0.1.2
+  puppeteer: threetreeslight/puppeteer@0.1.2
 
 nightly:
      triggers:
@@ -99,6 +100,8 @@ jobs:
       - run:
           name: Install percy
           command: npm install --save-dev percy
+      - run:   
+          command: npm i puppeteer
       - run:   
           command: npx percy snapshot _site/
       
